@@ -431,7 +431,7 @@ Usage: /home/alex/env_wsgi_framework/bin/uwsgi [options...]
     --stats-min                            minify statistics json output
     --stats-push                           push the stats json to the specified destination
     --stats-pusher-default-freq            set the default frequency of stats pushers
-    --stats-pushers-default-freq           set the default frequency of stats pushers
+ -stats-pushers-default-freq           set the default frequency of stats pushers
     --stats-no-cores                       disable generation of cores-related stats
     --stats-no-metrics                     do not include metrics in stats output
     --multicast                            subscribe to specified multicast group
