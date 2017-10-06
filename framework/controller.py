@@ -4,4 +4,6 @@ class Controller():
         self.request = request
 
     def processing_request(self):
-        pass
+        if self.request.is_get():
+            self._do_get()
+
