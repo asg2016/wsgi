@@ -1,12 +1,18 @@
 from urllib.parse import parse_qs
 
+
 def application(environ, start_response):
-    global start_response_header
     global request
     global response
-    start_response_header = start_response
+    start_response(response['status'], [('Content-type',response['content_type'])])
     request = Request(environ)
-    return print_to_browser()
+    return response
+
+
+def not_found():
+    response.status = '404 Not Found'
+    response.content_type = 'text/plain'
+
 
 class Request(object):
     def __init__(self, environ):
@@ -44,24 +50,6 @@ class Request(object):
     def is_delete(self):
         return request.method_type == 'DELETE'
 
-    def want_form_data_parsed(self):
-        return bool(self.environ.get('CONTENT_TYPE'))
-
-class Response(object):
-    status = '404'
-
-class Controller(object):
-    def processing_request(self, request):
-        pass
-
-    def template(self, filename,):
-        pass
 
 
 
-
-def print_to_browser():
-    start_response_header('200 OK', [('Content-Type', 'text/plain')])
-    if request is not None:
-        return request.render_to_generator()
-    return [b'Request is NONE']
