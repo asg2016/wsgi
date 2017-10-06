@@ -4,8 +4,8 @@ from framework import Router
 
 def application(environ, start_response):
     rules = {
-        '/': 'mymodel_list',
-        'mymodel/': 'mymodel_show'
+        'mymodel/': 'mymodel_show',
+        '/': 'mymodel_list'
     }
     request = Request(environ)
     router = Router(rules, request)
@@ -13,9 +13,12 @@ def application(environ, start_response):
     if isinstance(controller, object) and isinstance(model, object) \
             and isinstance(template_path, str):
         controller.connect('db.sqlite')
-        response = debug_message('COOL', start_response)
+        debug_message('', start_response)
+        response = request.debug_render_to_text()
         print(request.request_data)
-        print(view)
+        print(request.method_type())
+        print(request.get_query_string())
+        print(request.is_get())
     else:
         response = get_404_not_found(request, start_response, True)
 

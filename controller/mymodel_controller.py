@@ -22,7 +22,3 @@ class Controller(object):
                 return model_list
         elif request.is_post():
             pass
-        elif request.is_put():
-            pass
-        elif request.is_delete():
-            pass
