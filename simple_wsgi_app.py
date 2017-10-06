@@ -40,9 +40,14 @@ class UWSGIApp():
 
 
 class App(object):
-    def __call__(selfself, environ, start):
+    def __call__(self, environ, start):
         start('200 OK', [('Content-Type', 'text/plain')])
-        return [b'Hello class!!!']
+        self.environ = environ
+        return self.print_environ()
+
+    def print_environ(self):
+        for key, value in self.environ.items():
+            yield ''.join([key, ' ', str(value), '\n']).encode()
 
 
 app = App()
