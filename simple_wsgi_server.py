@@ -1,9 +1,9 @@
 import socket
 
 
-def server_forever():
+def server_forever(address, port):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 9004))
+    server_socket.bind((address, port))
     server_socket.listen()
     while True:
         client_connection, client_address = server_socket.accept()
@@ -20,6 +20,10 @@ def handle_request(server_socket, application):
     response = application(parse_request(raw_request), start_response)
     client_connection.sendall(response)
     client_connection.close()
+
+
+def run_uwsgi_application(application):
+    pass
 
 
 def application(environ, start_response):
