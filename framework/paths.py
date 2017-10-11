@@ -9,6 +9,12 @@ template_dirs = {
 
 make_dirs(template_dirs)
 
+controller_dirs = {
+    'controllers': os.path.join(root, 'controllers')
+}
+
+make_dirs(controller_dirs)
+
 static_dirs = {
     'static': os.path.join(root, 'static')
 }

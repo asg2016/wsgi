@@ -23,10 +23,18 @@ class Request(object):
             yield ''.join([key, ' = ', value, '\n']).encode()
 
     def debug_render_to_html(self):
-        html = []
         for key, value in self.environ.items():
-            html += ['<b>',key,'</b>',' ',value,'<br>']
-        return html
+            yield ''.join(['<b>',key,' = </b>',' ',value,'<br>']).encode()
+
+    def get_request_uri(self):
+        if self.environ['REQUEST_URI'] != '':
+            return self.environ['REQUEST_URI']
+        elif self.environ['PATH_INFO'] != '':
+            return self.environ['PATH_INFO']
+        elif self.environ['QUERY_STRING'] != '':
+            return self.environ['QUERY_STRING']
+        else:
+            return
 
     def method_type(self):
         return self.environ['REQUEST_METHOD']
