@@ -18,6 +18,8 @@ class Controller(object):
                 cursor.execute('''
                     Select * From ?
                 ''',model.table_name)
+                model_list = cursor.fetchall()
+                return model_list
         elif request.is_post():
             pass
         elif request.is_put():

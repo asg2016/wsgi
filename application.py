@@ -14,6 +14,7 @@ def application(environ, start_response):
             and isinstance(template_path, str):
         controller.connect('db.sqlite')
         response = debug_message('COOL', start_response)
+        print(request.request_data)
         print(view)
     else:
         response = get_404_not_found(request, start_response, True)
