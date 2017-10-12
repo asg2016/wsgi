@@ -9,6 +9,11 @@ def application(environ, start_response):
     }
     request = Request(environ)
     router = Router(rules, request)
-    response = get_404_not_found(request, start_response, True)
+    controller, model, template_path = router.route()
+    if isinstance(controller) and isinstance(model) \
+            and isinstance(template_path):
+        print(controller)
+    else:
+        response = get_404_not_found(request, start_response, True)
     return response
 

@@ -1,6 +1,6 @@
 import os
 import re
-import importlib
+import importlib.util
 
 
 class Router(object):
@@ -26,9 +26,9 @@ class Router(object):
                 values = value.split('_')
                 break
         if values is not None:
-            controller_path = os.path.join(self.root_path, 'controller', values[0], '_controller.py')
-            model_path = os.path.join(self.root_path, 'model', values[0], '_model.py')
-            template_path = os.path.join(self.root_path, 'template', values[1], '.html')
+            controller_path = os.path.join(self.root_path, 'controller', values[0] + '_controller.py')
+            model_path = os.path.join(self.root_path, 'model', values[0] + '_model.py')
+            template_path = os.path.join(self.root_path, 'template', values[1] + '.html')
             controller = self._load_module(controller_path, 'c').Controller()
             model = self._load_module(model_path, 'm').Model()
         return controller, model, template_path
