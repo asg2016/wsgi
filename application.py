@@ -1,5 +1,5 @@
-from framework.requests import Request
-from framework.helpers import get_404_not_found
+from framework import Request
+from framework import get_404_not_found
 
 
 def application(environ, start_response):
