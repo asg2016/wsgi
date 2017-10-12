@@ -1,14 +1,9 @@
 import sqlite3
-from framework.helpers import traceback_to_browser
 
 class Controller(object):
 
     def __init__(self):
-        self.request = None
         self.connection = None
-
-    def __str__(self):
-        return 'controller is active!!!'
 
     def connect(self, path_to_db):
         try:
@@ -18,11 +13,14 @@ class Controller(object):
 
     def processing_request(self, request, model):
         if request.is_get():
-            pass
+            if isinstance(self.connection, object):
+                cursor = self.connection.cursor()
+                cursor.execute('''
+                    Select * From ?
+                ''',model.table_name)
         elif request.is_post():
             pass
         elif request.is_put():
             pass
         elif request.is_delete():
             pass
-

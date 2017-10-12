@@ -1,11 +1,6 @@
 import os
 import datetime
 
-def make_dirs(dirs_dict):
-    for key, value in dirs_dict.items():
-        if not os.path.exists(value):
-            os.makedirs(value)
-
 
 def debug_message(msg, start_response):
     start_response('200 OK', [('Content-Type', 'text/plain')])
@@ -24,3 +19,7 @@ def get_404_not_found(request, start_response, debug=True):
                               ('Content-Language', 'ru')
                           ])
     return debug_msg
+
+
+def render_template(start_response, template_path):
+    pass
