@@ -10,7 +10,7 @@ class Controller(object):
     def connect(self, path_to_db):
         try:
             self.connection = sqlite3.connect(path_to_db)
-        except sqlite3.DatabaseError as self.err:
+        except sqlite3.DatabaseError:
             pass
 
     def processing_request(self, request, model):
