@@ -39,9 +39,6 @@ class Request(object):
     def method_type(self):
         return self.environ['REQUEST_METHOD']
 
-    def is_head(self):
-        return self.method_type() == 'HEAD'
-
     def is_post(self):
         return self.method_type() == 'POST'
 
@@ -55,4 +52,4 @@ class Request(object):
         return self.method_type == 'DELETE'
 
     def is_unsupported_method(self):
-        return self.method_type() not in ['HEAD', 'POST', 'PUT', 'GET', 'DELETE']
+        return self.method_type() not in ['POST', 'PUT', 'GET', 'DELETE']

@@ -7,6 +7,9 @@ class Controller(object):
         self.request = None
         self.connection = None
 
+    def __str__(self):
+        return 'controller is active!!!'
+
     def connect(self, path_to_db):
         try:
             self.connection = sqlite3.connect(path_to_db)

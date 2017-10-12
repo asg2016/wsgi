@@ -1,5 +1,4 @@
 import os
-import traceback
 import datetime
 
 def make_dirs(dirs_dict):
@@ -8,9 +7,9 @@ def make_dirs(dirs_dict):
             os.makedirs(value)
 
 
-def traceback_to_browser(start_response):
-    start_response('500 Internal Error',[('Content-Type', 'text/plain')])
-    return traceback.format_exc()
+def debug_message(msg, start_response):
+    start_response('200 OK', [('Content-Type', 'text/plain')])
+    return msg.encode()
 
 
 def get_404_not_found(request, start_response, debug=True):
