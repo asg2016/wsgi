@@ -16,11 +16,11 @@ def application(environ, start_response):
     }
     request = Request(environ)
     router = Router(rules, request)
-    controller, model, view, template_path = router.route()
+    controller, model, view, template_path, view_cmd = router.route()
     if isinstance(controller, object) and isinstance(model, object) \
         and isinstance(template_path, str) and callable(view):
         controller.connect('db.sqlite')
-        data = controller.processing_request(request, model,'list')
+        data = controller.processing_request(request, model, view_cmd)
         debug_message('', start_response)
         response = view(data, start_response)
         print(view)

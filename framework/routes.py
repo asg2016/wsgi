@@ -40,7 +40,7 @@ class Router(object):
             model = self._load_module(model_path, 'm')
             view_module = self._load_module(view_path, 'v')
             view = getattr(view_module, values[1] + '_view')
-        return controller, model, view, template_path
+        return controller, model, view, template_path, values[1]
 
 
 
