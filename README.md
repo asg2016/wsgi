@@ -15,6 +15,7 @@ The application folder structure must match
 
 # Attention
 Render to templates are not implemented but you can do it yourself
+in a example application you can use links http://localhost:9090/mymodel/?id=1 and http://localhost:9090
 
 Example application contain simple controller, model, view and simple sqlite3 database.
 
@@ -24,7 +25,3 @@ Example application contain simple controller, model, view and simple sqlite3 da
         'mymodel/': 'mymodel_show',
         '/': 'mymodel_list'
     }
-
-
-
-in a example application you can use links http://localhost:9090/mymodel/?id=1 and http://localhost:9090
