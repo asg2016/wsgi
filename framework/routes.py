@@ -20,7 +20,6 @@ class Router(object):
         spec.loader.exec_module(mod)
         return mod
 
-
     def route(self):
         controller = None
         model = None
@@ -41,9 +40,3 @@ class Router(object):
             view_module = self._load_module(view_path, 'v')
             view = getattr(view_module, values[1] + '_view')
         return controller, model, view, template_path, values[1]
-
-
-
-
-
-
