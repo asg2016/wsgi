@@ -32,7 +32,7 @@ class Router(object):
             view_path = os.path.join(self.root_path, 'view', 'views.py')
             template_path = os.path.join(self.root_path, 'template', values[1] + '.html')
             controller = self._load_module(controller_path, 'c').Controller()
-            model = self._load_module(model_path, 'm').Model()
+            model = self._load_module(model_path, 'm')
             view_module = self._load_module(view_path, 'v')
             view = getattr(view_module, values[1] + '_view')
         return controller, model, view, template_path

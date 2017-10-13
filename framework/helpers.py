@@ -21,5 +21,5 @@ def get_404_not_found(request, start_response, debug=True):
     return debug_msg
 
 
-def render_template(start_response, template_path):
+def render_template(template_path):
     pass

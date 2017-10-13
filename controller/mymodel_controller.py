@@ -11,14 +11,31 @@ class Controller(object):
         except sqlite3.DatabaseError:
             pass
 
-    def processing_request(self, request, model):
+    def _fetch_data_to_models(self, data, model):
+        model_data = []
+        for data_item in data:
+            model_instance = model.Model(data_item)
+            model_data.append(model_instance)
+        return model_data
+
+
+    def processing_request(self, request, model, cmd):
         if request.is_get():
             if isinstance(self.connection, object):
+                data = None
+                table_name = model.Model.table_name
                 cursor = self.connection.cursor()
-                cursor.execute('''
-                    Select * From ?
-                ''',model.table_name)
-                model_list = cursor.fetchall()
-                return model_list
+                sql = ''
+                if request.get_query_string() != '':
+                    sql = ''.join([
+                        'Select * From ', table_name, ' Where ', request.get_query_string()
+                    ])
+                elif cmd =='list':
+                    sql=''.join(['Select * From ', table_name])
+                cursor.execute(sql)
+                data = cursor.fetchall()
+                return self._fetch_data_to_models(data, model)
+            else:
+                return
         elif request.is_post():
             pass
