@@ -1,3 +1,10 @@
+'''
+Application module.
+The logic of the web application
+Application deploy on the uwsgi
+dependencies in requirements.txt
+'''
+
 from framework import Request
 from framework import get_404_not_found, debug_message
 from framework import Router
@@ -21,4 +28,3 @@ def application(environ, start_response):
         response = get_404_not_found(request, start_response, True)
 
     return response
-

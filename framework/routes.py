@@ -1,3 +1,8 @@
+'''
+Module contain simple router. URLs in dictionary rules.
+rules dictionary - user defined in application.py
+'''
+
 import os
 import re
 import importlib.util
