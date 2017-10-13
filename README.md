@@ -24,3 +24,5 @@ Example application contain simple controller, model, view and simple sqlite3 da
         'mymodel/': 'mymodel_show',
         '/': 'mymodel_list'
     }
+
+in a example application you can go to http://localhost:9090/mymodel/?id=1 and http://localhost:9090
